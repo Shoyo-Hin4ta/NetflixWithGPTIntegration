@@ -1,11 +1,22 @@
 import React, { useRef } from 'react'
 import { useState } from 'react';
 import { validateForm } from '../utils/validateForm';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const Form = () => {
 
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+
+
 
     let email = useRef(null);
     let password =  useRef(null);
@@ -17,6 +28,60 @@ const Form = () => {
         // console.log(message);
 
         setErrorMessage(message);
+
+        if(message) return;
+
+        //Sign In - Sign Up
+        if(!isSignIn){
+            //Sign Up Logic
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed up 
+
+                const user = userCredential.user;
+                // console.log(user);
+
+                updateProfile(user, {
+                    displayName: fullName.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+                  }).then(() => {
+                    // Profile updated!
+                    const {uid, email, displayName} = auth.currentUser;
+                    // Updating the store:
+                    dispatch(addUser({uid : uid, email : email, displayName : displayName}));
+                    navigate("/browse");
+
+                  }).catch((error) => {
+                    // An error occurred
+                    // ...
+                  });
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorMessage);
+            });
+
+        }
+        else{
+            //Sign In
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user)
+                console.log("user-logged in");
+                navigate("/browse");
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorMessage);
+            });
+
+        }
+
+
+
 
 
     };

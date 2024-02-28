@@ -5,7 +5,7 @@ export const validateForm = (email, password, ...rest) => {
 
     console.log(email, password, rest[0])
 
-    if (rest.length > 0) {
+    if (rest[0] !== undefined) {
         const fullName = rest[0];
 
         // Apply regex to fullname (assuming a simple example)
