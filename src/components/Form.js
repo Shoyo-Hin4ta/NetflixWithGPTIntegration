@@ -3,20 +3,17 @@ import { useState } from 'react';
 import { validateForm } from '../utils/validateForm';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { USER_IMG } from '../utils/constants';
 
 const Form = () => {
 
     const dispatch = useDispatch();
 
-    const navigate = useNavigate();
 
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
-
-
 
     let email = useRef(null);
     let password =  useRef(null);
@@ -42,13 +39,12 @@ const Form = () => {
                 // console.log(user);
 
                 updateProfile(user, {
-                    displayName: fullName.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
+                    displayName: fullName.current.value, photoURL: USER_IMG
                   }).then(() => {
                     // Profile updated!
                     const {uid, email, displayName} = auth.currentUser;
                     // Updating the store:
                     dispatch(addUser({uid : uid, email : email, displayName : displayName}));
-                    navigate("/browse");
 
                   }).catch((error) => {
                     // An error occurred
@@ -70,7 +66,6 @@ const Form = () => {
                 const user = userCredential.user;
                 console.log(user)
                 console.log("user-logged in");
-                navigate("/browse");
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -79,10 +74,6 @@ const Form = () => {
             });
 
         }
-
-
-
-
 
     };
 
