@@ -12,7 +12,7 @@ const Browse = () => {
 
   return (
     
-    <div>
+    <div className='relative'>
       <Header />
       {/* Layout of our browse */}
 

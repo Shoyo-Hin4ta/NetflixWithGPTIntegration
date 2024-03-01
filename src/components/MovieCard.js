@@ -1,8 +1,13 @@
 import React from 'react'
+import { MOVIE_POSTER } from '../utils/constants'
 
-const MovieCard = () => {
+const MovieCard = ({poster_path}) => {
+  console.log(poster_path)
   return (
-    <div>MovieCard</div>
+    <div>
+        <img alt = "poster"
+        src = {MOVIE_POSTER+poster_path} className=' min-w-32 min-h-40'/>
+    </div>
   )
 }
 

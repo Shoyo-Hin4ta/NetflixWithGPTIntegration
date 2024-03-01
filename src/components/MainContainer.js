@@ -9,7 +9,7 @@ const MainContainer = () => {
 
     if (!moviesArr) return;
 
-    console.log(moviesArr[0]);
+    // console.log(moviesArr[0]);
     const { original_title, overview, id} = moviesArr[0];
 
 
