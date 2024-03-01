@@ -2,7 +2,6 @@ import React from 'react'
 import { MOVIE_POSTER } from '../utils/constants'
 
 const MovieCard = ({poster_path}) => {
-  console.log(poster_path)
   return (
     <div>
         <img alt = "poster"

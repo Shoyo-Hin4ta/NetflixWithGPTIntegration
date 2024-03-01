@@ -8,13 +8,14 @@ const MovieList = ({title, nowPlaying}) => {
     return (
         <div className='mx-14 my-10'>
 
-            <h1 className='text-3xl mb-3'>{title}</h1>
+            <h1 className='text-3xl mb-3 text-white'>{title}</h1>
 
             <div className='flex overflow-x-scroll'>
-                {nowPlaying.map((movie) => <MovieCard key = {movie.id} poster_path = {movie.poster_path}/>)}
+                {nowPlaying.map((movie) => <MovieCard key = {movie.id} poster_path = {movie?.poster_path}/>)}
             </div>
-
         </div>
+
+        
   )
 }
 
