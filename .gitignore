@@ -11,6 +11,8 @@
 # production
 /build
 
+/src/utils/gptAPI
+
 # misc
 .DS_Store
 .env.local

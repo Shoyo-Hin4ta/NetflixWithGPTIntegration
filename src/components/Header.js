@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { HEADER_IMG, SUPPORTED_LANGUAGES, USER_IMG } from '../utils/constants';
 import { addOnClick } from '../utils/gptSlice';
+import { setLanguage } from '../utils/langSlice';
 
 const Header = () => {
 
@@ -61,20 +62,25 @@ const Header = () => {
 
   const movieRecommendationsBtnStatus = useSelector(store => store.gptPage.isMovieRecommendationClicked);
 
+  const handleLanguage = (e) => {
+    dispatch(setLanguage(e.target.value));
+  }
+
   return (
     <div className='top-0 left-0 flex justify-between bg-gradient-to-b from-black items-center absolute w-full z-50'>
       
       <img className= " w-48" alt = "header-logo" src = {HEADER_IMG} />
 
       {user && 
-      <div className='flex items-center  '>
-
-        <div className='mr-4 bg-white opacity-85 rounded-md px-4 py-2 mt-4'>
-          <label className= "text-base"for="Languages">Lang:</label>
-          <select>
-            {SUPPORTED_LANGUAGES.map(lang => <option className= "ml-1 text-base" key = {lang.identifier} value = {lang.identifier}>{lang.name}</option>)}
-          </select>
-        </div>
+      <div className='flex items-center '>
+        { movieRecommendationsBtnStatus && 
+          <div className='mr-4 bg-white opacity-85 rounded-md px-4 py-2 mt-4 hover:cursor-pointer'>
+            <label className= "text-base" htmlFor="Languages">Lang:</label>
+            <select onChange={handleLanguage} className='hover:cursor-pointer'>
+              {SUPPORTED_LANGUAGES.map(lang => <option className= "ml-1 text-base" key = {lang.identifier} value = {lang.identifier}>{lang.name}</option>)}
+            </select>
+          </div>
+        }
         
 
         <button className='bg-white text-base px-4 py-2 rounded-lg text-black mr-20 mt-4 shadow-lg opacity-85' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
