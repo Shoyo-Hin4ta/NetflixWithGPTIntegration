@@ -3,7 +3,7 @@ import React from 'react'
 const MainText = ({title, desc}) => {
   // console.log(title, desc);
   return (
-    <div className='flex flex-col items-center w-3/5 mx-14  absolute bg-black bg-opacity-10 bottom-1/3'>
+    <div className='flex flex-col items-center w-1/3 mx-14  absolute bg-black bg-opacity-0 bottom-1/3'>
 
       <div>
         <h1 className='text-6xl mb-8 text-white'>{title}</h1>

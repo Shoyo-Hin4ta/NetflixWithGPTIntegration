@@ -5,6 +5,9 @@ import MainContainer from './MainContainer';
 import SecondContainer from './SecondContainer';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
+import GPTRecommendations from './GPTRecommendations';
+import { useSelector } from 'react-redux';
+
 
 const Browse = () => {
 
@@ -14,9 +17,13 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
 
+
+  const buttonState = useSelector(store => store.gptPage.isMovieRecommendationClicked);
+
+
   return (
     
-    <div className='relative'>
+    <div className='relative '>
       <Header />
       {/* Layout of our browse */}
 
@@ -33,9 +40,19 @@ const Browse = () => {
             Movie Card 2
              
       */}
+
+
+      {buttonState ? (<>
+        <GPTRecommendations/>
+      </>) : <>
+        <MainContainer/>
+        <SecondContainer />
+      </>}
+
+
       
-      <MainContainer/>
-      <SecondContainer />
+      
+      
 
     </div>
   )

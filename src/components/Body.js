@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import Login from './Login'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Browse from './Browse'
+import GPTRecommendations from './GPTRecommendations'
 
 
 const Body = () => {
@@ -21,6 +22,10 @@ const Body = () => {
     {
       path : "/browse",
       element : <Browse />
+    },
+    {
+      path : "/moviesrecommendations",
+      element : <GPTRecommendations />
     }
   ])
 

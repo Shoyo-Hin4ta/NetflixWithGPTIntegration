@@ -4,7 +4,8 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
-import { HEADER_IMG, USER_IMG } from '../utils/constants';
+import { HEADER_IMG, SUPPORTED_LANGUAGES, USER_IMG } from '../utils/constants';
+import { addOnClick } from '../utils/gptSlice';
 
 const Header = () => {
 
@@ -19,6 +20,14 @@ const Header = () => {
   const showSignOut = () => {
     setArrowClicked(!arrowClicked)
   }
+
+
+
+  const handleMoviesRecommendationButton = () => {
+    dispatch(addOnClick());
+  }
+
+
 
   useEffect(() => {
 
@@ -50,17 +59,33 @@ const Header = () => {
       });
   }
 
+  const movieRecommendationsBtnStatus = useSelector(store => store.gptPage.isMovieRecommendationClicked);
 
   return (
     <div className='top-0 left-0 flex justify-between bg-gradient-to-b from-black items-center absolute w-full z-50'>
       
       <img className= " w-48" alt = "header-logo" src = {HEADER_IMG} />
 
-      {user &&  <div className='flex items-center'>
-        <img className= "w-12"alt= "user-logo" src = {USER_IMG} />
-        <span className = "mx-2" onClick={showSignOut}>⬇️</span>
-        <div>
-        <span className= 'text-white hover:cursor-pointer' onClick={handleSignOut}>Sign Out</span>
+      {user && 
+      <div className='flex items-center  '>
+
+        <div className='mr-4 bg-white opacity-85 rounded-md px-4 py-2 mt-4'>
+          <label className= "text-base"for="Languages">Lang:</label>
+          <select>
+            {SUPPORTED_LANGUAGES.map(lang => <option className= "ml-1 text-base" key = {lang.identifier} value = {lang.identifier}>{lang.name}</option>)}
+          </select>
+        </div>
+        
+
+        <button className='bg-white text-base px-4 py-2 rounded-lg text-black mr-20 mt-4 shadow-lg opacity-85' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
+        <div className='flex items-center relative flex-col mt-4 '>
+          <div className='flex items-center  '>
+            <img className= "block w-12"alt= "user-logo" src = {USER_IMG} />
+            <span className = "block ml-2 mt-5 hover:cursor-pointer" onClick={showSignOut}>⬇️</span>
+          </div>
+          <div>
+            {arrowClicked && <p className= 'text-black hover:cursor-pointer mt-4 bg-white text-base p-1 px-2 rounded-lg' onClick={handleSignOut}>Sign Out</p>}
+          </div>
         </div>
       </div>}
       

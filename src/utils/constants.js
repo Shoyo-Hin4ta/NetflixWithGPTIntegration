@@ -12,3 +12,14 @@ export const API_OPTIONS = {
 
 
 export const MOVIE_POSTER = "https://image.tmdb.org/t/p/original/"
+
+export const BACKGROUND = 'https://assets.nflxext.com/ffe/siteui/vlv3/2e07bc25-8b8f-4531-8e1f-7e5e33938793/61f2fefd-808e-4590-91ee-899afbd70bd7/US-en-20240219-popsignuptwoweeks-perspective_alpha_website_large.jpg';
+
+
+export const SUPPORTED_LANGUAGES = [{
+  identifier : "en",
+  name : "English"
+}, {
+  identifier : "hindi",
+  name : "Hindi"
+}]
