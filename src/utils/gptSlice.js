@@ -6,6 +6,7 @@ const gptSlice = createSlice({
         isMovieRecommendationClicked : false,
         gptMovies : [],
         isRecommendBtnClicked : false,
+        recommendedMovies : [],
     },
     reducers : {
         addOnClick : (state) => {
@@ -17,11 +18,14 @@ const gptSlice = createSlice({
         addisRecommendBtnClicked : (state) => {
             state.isRecommendBtnClicked = !state.isRecommendBtnClicked
         },
+        addRecommendedMovies : (state, action) => {
+            state.recommendedMovies = action.payload;
+        }
     }
 
 });
 
 
-export const {addOnClick, addMovies, addisRecommendBtnClicked} = gptSlice.actions;
+export const {addOnClick, addMovies, addisRecommendBtnClicked, addRecommendedMovies} = gptSlice.actions;
 
 export default gptSlice.reducer;
