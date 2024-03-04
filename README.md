@@ -23,3 +23,6 @@ All the while, we are storing in the incoming movie data in our store, in the mo
 Created the UI of the GPT - recommend page, which will suggest the movies to the user based on his preference. 
 As an additional feature, Language functionality is added to the GPT-recommend page. Also, state of language is managed by langSlice in the appStore.
 
+Recommended Movies are stored in the store, for each movie . An API call is made to the TMDB to search and get that movies to display it in the page, along with overview title and poster of the image.
+
+Did memoization for the apis. So, they are not called each and every time.

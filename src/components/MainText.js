@@ -8,9 +8,9 @@ const MainText = ({title, desc}) => {
       <div>
         <h1 className='text-6xl mb-8 text-white'>{title}</h1>
         <p className='mb-8 text-white'> {desc} </p>
-        <div>
-          <button className='mr-2 px-6 py-2 bg-white rounded-lg text-lg hover:opacity-80'> ▶️ Play</button>
-          <button className='text-white px-6 py-2 bg-black opacity-90 rounded-lg text-lg hover:cursor-pointer'> More Info</button>
+        <div className='flex md:'>
+          <button className='p-1 mr-2 md:px-6 md:py-2 bg-white rounded-lg text-lg hover:opacity-80'> ▶️ Play</button>
+          <button className='p-1 text-white md:px-6 md:py-2 bg-black opacity-90 rounded-lg text-lg hover:cursor-pointer'> More Info</button>
         </div>
       </div>
       

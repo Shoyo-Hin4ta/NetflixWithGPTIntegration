@@ -73,7 +73,7 @@ const Header = () => {
 
   const recommendBtnStatus = useSelector(s => s.gptPage.isRecommendBtnClicked);
   return (
-    <div className='top-0 left-0 flex justify-between bg-gradient-to-b from-black items-center absolute w-full z-50'>
+    <div className='top-0 left-0 flex justify-between bg-gradient-to-b from-black items-center absolute w-full z-50  h-[100px]'>
       
       <img className= " w-48" alt = "header-logo" src = {HEADER_IMG} />
 
@@ -82,7 +82,7 @@ const Header = () => {
         { movieRecommendationsBtnStatus && 
 
           
-          <div className='mr-4 bg-white opacity-85 rounded-md px-4 py-2 mt-4 hover:cursor-pointer'>
+          <div className='mr-4 bg-white opacity-85 rounded-md px-4 py-2  hover:cursor-pointer'>
             { recommendBtnStatus ? <span onClick={handleBackToBrowse}>Back to Recommendation Page</span>:
             <>
               <label className= "text-base" htmlFor="Languages">Lang:</label>
@@ -95,8 +95,8 @@ const Header = () => {
         }
         
 
-        <button className='bg-white text-base px-4 py-2 rounded-lg text-black mr-20 mt-4 shadow-lg opacity-85' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
-        <div className='flex items-center relative flex-col mt-4 '>
+        <button className='bg-white text-base md:px-4 md:py-2 rounded-lg text-black mr-20 md: shadow-lg opacity-85 p-2' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
+        <div className='flex items-center relative flex-col h-[50px] w-[100px] '>
           <div className='flex items-center  '>
             <img className= "block w-12"alt= "user-logo" src = {USER_IMG} />
             <span className = "block ml-2 mt-5 hover:cursor-pointer" onClick={showSignOut}>⬇️</span>
