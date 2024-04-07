@@ -23,7 +23,7 @@ const Browse = () => {
 
   return (
     
-    <div className='relative '>
+    <div className='relative h-screen w-full border border-black'>
       <Header />
       {/* Layout of our browse */}
 

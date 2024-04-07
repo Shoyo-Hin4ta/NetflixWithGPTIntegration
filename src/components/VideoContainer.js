@@ -11,8 +11,8 @@ const VideoContainer = ({id}) => {
   if (!movieTrailer) return;
 
   return (
-    <div className=''>
-      <iframe className= 'w-screen aspect-video' 
+    <div className='w-screen'>
+      <iframe className= 'w-full h-full aspect-video mt-0 z-40 sm:mt-0' 
       src={"https://www.youtube-nocookie.com/embed/"+movieTrailer?.key+"?&autoplay=1&mute=1"}
       title="YouTube video player" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 

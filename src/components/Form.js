@@ -6,11 +6,12 @@ import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { USER_IMG } from '../utils/constants';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
 
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
 
     const [isSignIn, setIsSignIn] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -45,6 +46,7 @@ const Form = () => {
                     const {uid, email, displayName} = auth.currentUser;
                     // Updating the store:
                     dispatch(addUser({uid : uid, email : email, displayName : displayName}));
+                    navigate("/browse")
 
                   }).catch((error) => {
                     // An error occurred
@@ -83,7 +85,7 @@ const Form = () => {
     
 
     return (
-    <div className='absolute w-[450px] bg-black p-12 bg-opacity-85 rounded-lg'>
+    <div className='absolute sm:w-[450px] w-full bg-black p-12 bg-opacity-85 rounded-lg'>
         <h3 className='text-white text-4xl mb-10 mx-7 font-bold'>{ isSignIn ? "Sign In" :"Sign Up" }</h3>
         <form className='flex flex-col text-white' onSubmit={(e) => e.preventDefault()}>
 

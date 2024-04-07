@@ -22,15 +22,9 @@ const Header = () => {
   const showSignOut = () => {
     setArrowClicked(!arrowClicked)
   }
-
-
-
   const handleMoviesRecommendationButton = () => {
     dispatch(addOnClick());
   }
-
-
-
   useEffect(() => {
 
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -73,12 +67,12 @@ const Header = () => {
 
   const recommendBtnStatus = useSelector(s => s.gptPage.isRecommendBtnClicked);
   return (
-    <div className='top-0 left-0 flex justify-between bg-gradient-to-b from-black items-center absolute w-full z-50  h-[100px]'>
+    <div className='top-0 left-0 flex justify-between bg-gradient-to-b  from-black items-center absolute w-screen z-50  h-[100px]'>
       
-      <img className= " w-48" alt = "header-logo" src = {HEADER_IMG} />
+      <img className= "sm:w-48 w-32 mt-2 sm:mt-0" alt = "header-logo" src = {HEADER_IMG} />
 
       {user && 
-      <div className='flex items-center '>
+      <div className='flex sm:items-center '>
         { movieRecommendationsBtnStatus && 
 
           
@@ -95,7 +89,7 @@ const Header = () => {
         }
         
 
-        <button className='bg-white text-base md:px-4 md:py-2 rounded-lg text-black mr-20 md: shadow-lg opacity-85 p-2' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
+        <button className='bg-white text-xs sm:text-base md:px-4 md:py-2 rounded-lg text-black sm:mr-20 mr-4 md:shadow-lg opacity-85 sm:p-2 p-1 ' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
         <div className='flex items-center relative flex-col h-[50px] w-[100px] '>
           <div className='flex items-center  '>
             <img className= "block w-12"alt= "user-logo" src = {USER_IMG} />
