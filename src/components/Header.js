@@ -72,28 +72,28 @@ const Header = () => {
       <img className= "sm:w-48 w-32 mt-2 sm:mt-0" alt = "header-logo" src = {HEADER_IMG} />
 
       {user && 
-      <div className='flex sm:items-center '>
+      <div className='flex sm:items-center justify-center gap-1 items-center'>
         { movieRecommendationsBtnStatus && 
 
           
-          <div className='mr-4 bg-white opacity-85 rounded-md px-4 py-2  hover:cursor-pointer'>
-            { recommendBtnStatus ? <span onClick={handleBackToBrowse}>Back to Recommendation Page</span>:
-            <>
-              <label className= "text-base" htmlFor="Languages">Lang:</label>
-              <select onChange={handleLanguage} className='hover:cursor-pointer'>
-                {SUPPORTED_LANGUAGES.map(lang => <option className= "ml-1 text-base" key = {lang.identifier} value = {lang.identifier}>{lang.name}</option>)}
+          <div className='opacity-85  sm:text-base text-xs rounded-md bg-white py-2 sm:px-4 sm:py-0  hover:cursor-pointer text-center'>
+            { recommendBtnStatus ? <div onClick={handleBackToBrowse} className='sm:py-2'>Back to Recommendation Page</div>:
+            <div className='flex py-2 bg-white items-center justify-center sm:p-2 rounded-md'>
+              <label className= "text-xs sm:text-base" htmlFor="Languages">Lang:</label>
+              <select onChange={handleLanguage} className='hover:cursor-pointer text-xs sm:text-base'>
+                {SUPPORTED_LANGUAGES.map(lang => <option className= "ml-1 text-xs sm:text-base" key = {lang.identifier} value = {lang.identifier}>{lang.name}</option>)}
               </select>
-            </>
+            </div>
             }
           </div>
         }
         
 
-        <button className='bg-white text-xs sm:text-base md:px-4 md:py-2 rounded-lg text-black sm:mr-20 mr-4 md:shadow-lg opacity-85 sm:p-2 p-1 ' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
+        <button className='bg-white text-xs sm:text-base md:px-4 md:py-2 rounded-lg text-black sm:mr-20 mr-1 md:shadow-lg opacity-85 sm:p-2 p-2' onClick={handleMoviesRecommendationButton}> {movieRecommendationsBtnStatus ? "Back To Browse" : "Recommendations"} </button>
         <div className='flex items-center relative flex-col h-[50px] w-[100px] '>
-          <div className='flex items-center  '>
+          <div className='flex items-center'>
             <img className= "block w-12"alt= "user-logo" src = {USER_IMG} />
-            <span className = "block ml-2 mt-5 hover:cursor-pointer" onClick={showSignOut}>⬇️</span>
+            <span className = "block sm:ml-2 ml-1 mt-5 hover:cursor-pointer" onClick={showSignOut}>⬇️</span>
           </div>
           <div>
             {arrowClicked && <p className= 'text-black hover:cursor-pointer mt-4 bg-white text-base p-1 px-2 rounded-lg' onClick={handleSignOut}>Sign Out</p>}

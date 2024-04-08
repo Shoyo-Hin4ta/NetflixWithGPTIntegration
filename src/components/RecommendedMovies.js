@@ -15,7 +15,7 @@ const RecommendedMovies = () => {
 
 
   return (
-    <div className='border bg-black'>
+    <div className='border bg-black w-screen'>
       <div>
         <div className='text-center text-2xl mt-24 text-white'>Recommended Movies</div>
         <div className='flex flex-wrap m-4 justify-center mx-auto'>{
