@@ -6,7 +6,7 @@ const MovieList = ({title, nowPlaying}) => {
     // console.log(nowPlaying[0].poster_path);
 
     return (
-        <div className='mx-14 my-10'>
+        <div className='mx-14 my-10 '>
 
             <h1 className='text-3xl mb-3 text-white'>{title}</h1>
 
